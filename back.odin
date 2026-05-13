@@ -125,7 +125,7 @@ register_segfault_handler :: proc() {
 }
 
 print :: proc(lines: []Line, padding := "    ", w: Maybe(io.Writer) = nil, no_temp_guard := false) {
-	w := w.? or_else os.stream_from_handle(os.stderr)
+	w := w.? or_else os.to_stream(os.stderr)
 
 	runtime.DEFAULT_TEMP_ALLOCATOR_TEMP_GUARD(ignore=no_temp_guard)
 
